@@ -1,0 +1,11 @@
+<?php
+
+define('DB_HOST', 'localhost');
+define('DB_USER', '<user>');
+define('DB_PASSWORD', '<pass>');
+define('DB_BASE', 'passeport_transition');
+
+define('FB_APP_ID', "<YOUR_FB_APP_ID>");
+define('FB_APP_SECRET', "<YOR_FB_SECRET>");
+define('PROFILE_DIR', "img/profile/");
+?>

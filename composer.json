@@ -1,0 +1,11 @@
+{
+    "config" : {
+        "disable-tls" : true ,
+        "secure-http" : false 
+    },
+
+   "require": {
+        "league/plates": "3.*",
+        "facebook/graph-sdk" : "~5.0"
+   }
+}
