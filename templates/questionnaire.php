@@ -1,11 +1,61 @@
-  <?php $this->layout('main', ['title' => 'Questionnaire']) ?>
+  <?php 
 
+  if ($user) {
+    $title = "Passeport Transition de $user->firstname $user->name";
+    $description = 
+      "$user->firstname $user->name a fait le point sur ses engagements.\n 
+      Découvrez vous aussi des actions simples et concrètes pour participer au changement de société.";
+    $image = "img/out/$user->id.png?v=$user->last_update";
+  } else {
+    $title = "Mon Passeport Transition : Faites le point sur vos engagements personnels.";
+    $description = 
+      "Le passeport transition vous permet de faire le point sur votre implication dans les transitions (écologique, énergétique, sociale, alimentaire, ...) 
+      et vous propose une liste d'actions concrètes, pour changer les choses à votre niveau.";
+  }
+  $this->layout('main', 
+  [
+    'title' =>  $title, 
+    'description' => $description, 
+    'image' => $image]) ?>
+
+
+        <div id="nav">
+          <div class="navbar navbar-static-top">
+            <div class="container-fluid">
+              <ul id="nav-root" class="nav navbar-nav navbar-horiz">
+                <?php foreach($data->sections as $section) : ?>
+                <li>
+                   <a href="#section-<?= $section->id ?>" title="<?= $section->name ?>">
+                      <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x text-warning" style="color:<?= $section->icon_color ?>"></i>
+                        <i class="fa fa-<?= $section->icon_symbol ?> fa-stack-1x" ></i>
+                      </span>
+                      <span class="hidden-xs"><?= $section->name ?></span>
+                    </a>
+                </li>
+                <?php endforeach ?>
+                <li>
+                  <a href="javascript:submit()" class="btn btn-success" style="padding:7px"/>
+                    <span class="glyphicon glyphicon-ok" title="Envoyer"></span>
+                    <span class="hidden-xs">Terminer</span>
+                  </a></li>
+              </div>
+            </div>
+          </div>
+        </div>    
         <div class="content-section-a">
 
           <div class="container">
             <div class="row">
-              <div class="col-sm-8 col-sm-offset-2 texte-intro">
-                  <h3>Introduction</h3>
+              <div class="col-sm-8 col-sm-offset-3 texte-intro">
+                  <h3>
+                    <span class="fa-stack">
+                        <i class="fa fa-circle fa-stack-2x text-warning" style="color:#fbff96"></i>
+                        <i class="fa fa-question fa-stack-1x" ></i>
+                    </span>  
+                    Introduction
+                  </h3>
+
                 <?php if (($user != null) && $user->authenticated) : ?>
               
                   <p>
@@ -13,8 +63,7 @@
                   </p>
 
                   <P>
-                  Il semble que vous ayez <b>déjà participé</b> 
-                  au passeport transition.
+                  Il semble que vous ayez <b>déjà participé</b> au passeport transition.
                   </p>
                   
                   <p>
@@ -22,20 +71,25 @@
                   Nous vous invitons à <b>faire le point</b> sur vos engagements.  
                   </p>
 
+                  <a class="btn btn-primary" href="javascript:logout();">
+                    <span class="glyphicon glyphicon-log-out"></span>
+                    Se délogguer
+                  </a>
+
                 <?php else : ?>
                   <?php if ($user != null) : ?>
 
                   <p>
                     Bonjour,<br/>
                     <?= $user->firstname ?> a établi son passeport transition, et a partagé sa carte avec vous :
-                    <img src="img/out/<?= $user->id ?>.png?<?= $user->last_update ?>" class="img-responsive" />
+                    <img src="<?= $image ?>" class="img-responsive" />
                   </p>
 
                   <?php endif?>
 
       
                 <p>
-                  Le passeport transition vous permet de vous <b>engager</b> et de faire le point votre <b>implication</b> dans les transitions: écologique, 
+                  Le passeport transition vous permet de vous <b>engager</b> et de faire le point sur votre <b>implication</b> dans les transitions: écologique, 
                   énergétique, sociale, alimentaire, ...
                 </p>
                 <p>
@@ -60,11 +114,11 @@
             
 
               <?php foreach($data->sections as $section) : ?>
-                <div class="col-sm-8 col-sm-offset-2 panel-group" id="accordion">
+                <div class="col-sm-8 col-sm-offset-3 panel-group" id="accordion">
                   <div class="panel panel-default">
-                    <div class="panel-heading" data-toggle="collapse" data-target="#collapse-<?= $section->id ?>">
+                    <div id="section-<?= $section->id ?>" class="panel-heading" data-toggle="collapse" data-target="#collapse-<?= $section->id ?>">
                       <h4 class="panel-title">
-                        <span class="fa-stack ">
+                        <span class="fa-stack fa-lg">
                           <i class="fa fa-circle fa-stack-2x text-warning" style="color:<?= $section->icon_color ?>"></i>
                           <i class="fa fa-<?= $section->icon_symbol ?> fa-stack-1x" ></i>
                         </span>
@@ -77,11 +131,16 @@
                           <?= $section->getDescription() ?>
                         </div>
 
-                        <?php foreach($section->questions as $question ) : 
+
+                        <?php 
+                        $question_num = 0;  
+                        foreach($section->questions as $question ) : 
+                        $question_num +=1;
                         $question_id = $section->id . '_' . $question->id ?>                        
                         <hr class="question-separator"/>
                         <div>
                           <h4>
+                            <span class="title-num"><?= $question_num ?></span> 
                             <?= $question->name ?>
                           <?php $this->insert('partials/info-button', ['id' => $question_id . '_modal']); ?>
                           </h4>
@@ -96,6 +155,7 @@
                               <?php if (($option->id == 'plus') && (is_null($question->extra_option_label))) continue ?>
                               <div class="radio radio-<?= $option->color ?>">
                                 <input 
+                                  data-score="<?= $option->score ?>"
                                   id="<?= $option_id ?>" 
                                   type="radio" 
                                   value="<?= $option->id ?>" 
@@ -125,12 +185,39 @@
             </div>
           <?php endforeach ?>
 
-              <div class="col-sm-8 panel-group col-sm-offset-2 text-center">
-                 <input form="form" type="submit" class="btn btn-success btn-lg" value="Terminer" />
+              <div class="col-sm-8 panel-group col-sm-offset-3 text-center">
+                 <a href="javascript:submit()" class="btn btn-success btn-lg" value="Terminer">Terminer</a>
               </div>
-
-
           </form>
+
+
+<!-- Confirm modal -->
+<div id="confirm-modal" class="modal"  role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Questionnaire incomplet</h4>
+        </div>
+        <div class="modal-body">
+          <p>
+            Il y a encore <span id="confirm-num">X</span> questions sans réponses.<br/>
+            Voulez vous quand même continuer ?
+          </p>
+        </div>
+        <div class="modal-footer">
+            <button id="modal-submit" type="button" class="btn btn-success" data-dismiss="modal">Continuer</button>
+            <button type="button" class="btn btn-error" data-dismiss="modal">Annuler</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <div id="score" >
+  </div>
+
         </div>
 
     </div>

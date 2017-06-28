@@ -9,6 +9,11 @@
   <meta name="description" content="<?= $description ?>">
   <meta name="author" content="">
 
+  <meta property="og:type"               content="article" />
+  <meta property="og:title"              content="<?= $title ?>" />
+  <meta property="og:description"        content="<?= $description ?>" />
+  <meta property="og:image"              content="<?= $image ?: "http://passeport-transition.fr/img/sample-passeport.png"?>" />
+
   <title><?= $title ?></title>
 
   <!-- Bootstrap Core CSS -->
@@ -32,7 +37,7 @@
       </head>
 
 
-      <body>
+      <body data-spy="scroll" data-target="#nav-root" data-offset="50">
 
         <!-- Header -->
         <a name="about"></a>
@@ -87,6 +92,9 @@
 
   <!-- Bootstrap Core JavaScript -->
   <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+
+
 
 </body>
 

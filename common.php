@@ -108,7 +108,7 @@ function getAuthUser() {
 
 $user = getAuthUser();
 
-if ($user != null) {
+if ($user != null && $user->authenticated) {
 	fetchResponses($user->id, $data);
 }
 

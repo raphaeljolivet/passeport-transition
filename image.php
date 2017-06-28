@@ -9,9 +9,9 @@ $FONT = 'font-awesome/fonts/fontawesome-webfont.ttf';
 $ICONS = 'font-awesome/icons.yml';
 $ICON_SIZE = 40;
 $ICONS_LEFT = 450;
-$ICONS_TOP = 250;
+$ICONS_TOP = 180;
 $ICONS_HEIGHT = 100;
-$NB_ICONS_PER_COL=3;
+$NB_ICONS_PER_COL=4;
 $COL_WIDTH = 370;
 $LABEL_SIZE = 30;
 $NAME_SIZE = 50;
@@ -168,7 +168,7 @@ function updateImage($user, $data) {
 	draw_section(
 			$img, 
 			$ICONS_LEFT+0.5*$COL_WIDTH, 
-			$ICONS_TOP+3* $ICONS_HEIGHT, 
+			$ICONS_TOP+4* $ICONS_HEIGHT, 
 			"Total", 
 			"calculator",
 			"#B5955C",

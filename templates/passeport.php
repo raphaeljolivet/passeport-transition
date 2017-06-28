@@ -3,7 +3,7 @@
 
   <div class="container">
     <div class="row">
-     <div class="col-sm-8 col-sm-offset-2 panel-group " id="accordion">
+     <div class="col-sm-8 col-sm-offset-2 panel-group ">
   		<div class="panel panel-default">
         	<div class="panel-heading" >
             	<h4 class="panel-title">Votre passeport</h4>
@@ -80,6 +80,48 @@
               <hr/>
 
               <img src="img/out/<?= $user->id ?>.png?<?= $user->last_update ?>" class="img-responsive" />
+
+               <hr/>
+
+               <h4> Partager </h4>
+
+               <?php 
+                  $public_link = "http://passeport-transition.fr/?userid=$user->id"; 
+                  $private_link = "$public_link&secret=$user->secret";
+                  $APP_ID = FB_APP_ID;
+                  $public_link_v = urlencode("$public_link&v=$user->last_update");
+                  $fb_link = "https://www.facebook.com/dialog/share?app_id=$APP_ID&display=popup&href=$public_link_v"; 
+               ?> 
+
+
+                <div class="panel panel-success">
+                  <div class="panel-heading">Lien public</div>
+                  <div class="panel-body">
+                    Vous pouvez partager ce passeport avec le lien public suivant :<br>
+                                  <a href="<?= $public_link ?>"><?= $public_link ?></a>
+
+                    <br/></br>
+                    <a class="btn btn-primary btn-lg" href="<?= $fb_link ?>" target="popup"> 
+               
+                      <i class="glyphicon glyphicon-share"></i>
+                      <i class="fa fa-facebook fa-inverse"></i>
+               
+                      Partager sur Facebook
+                    </a>
+
+                  </div>
+                </div>
+
+                <div class="panel panel-danger">
+                  <div class="panel-heading">Lien privé</div>
+                  <div class="panel-body">
+                  Pour revenir ultérieurement et mettre à jour vos engagements et votre passeport, 
+                  enregistrez ce lien (mais ne le partagez pas)<br>
+                  <a href="<?= $private_link ?>"><?= $private_link ?></a>
+                </div>
+               </div>
+
+
 
             </div>
           </div>

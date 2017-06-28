@@ -33,7 +33,7 @@
 		<id>energie</id>
 		<name>Énergie</name>
 		<description>
-			Lorem ipsum, foo <b>lorem ispum</b>
+			Que ce soit pour endiguer le <b>réchauffement climatique</b>, ou anticiper la <a href="https://www.youtube.com/watch?v=3l4JwCv1Gtc">fin annoncée du pétrole bon marché</a>, il est indispensable d'embrayer la transition énergétique. Nos choix de consommation personnels peuvent être décisifs dans ce virage.
 		</description>
 		<icon>
 			<symbol>lightbulb-o</symbol>
@@ -42,11 +42,17 @@
 		<questions>
 			<question>
 				<id>fournisseur</id>
-				<name>Choisir un fournisseur d'énergie renouvelable</name>
-				<description>Bla bla bla bla foo bar</description>
+				<name>Je choisis un fournisseur d'énergie renouvelable</name>
+				<description>
+					Il est aujourd'hui possible de changer de fournisseur d'énergie depuis son salon, sur le net, en 15 minutes, 
+					et de ne plus consommer que de l'électricité <b>renouvelable</b>, <b>non-carbonnée</b> et <b>non-nucléaire</b>.<br/>
+					Dans ce domaine, <a href="http://www.enercoop.fr/">Enercoop</a> est la seule coopérative indépendante à fournir de l'électricité verte (éolienne, solaire et hydrolique).  	
+				</description>
 				<extra_option>
 					<label>Je produis et consomme ma propre énergie</label>
-					<description>Blablabla</description>
+					<description>Il est <a href="http://www.la-croix.com/Economie/France/Une-encourage-lautoconsommation-delectricite-2017-02-17-1200825468">désormais possible de produire et de consommer sa propre énergie, sans avoir à la revendre au réseau au préalable</a>. L'installation de panneaux solaires (thermiques / photovoltaïques) est un investissement rentable.<br/>
+					Renseignez vous auprès de votre <i>Espace Info Energie</i>.		
+					</description>
 				</extra_option>
 			</question>
 
@@ -58,73 +64,297 @@
 					Il y a plusieurs réflexes à prendre pour réduire significativement votre consommation. <acronym title=" l'Agence de l'Environnement et de la Maîtrise de l'Energie.">l'Ademe</acronym> a édité un <a href="http://www.ademe.fr/sites/default/files/assets/documents/guide-pratique-trucs-astuces-pour-economiser.pdf">guide complet en ce sens</a>. Prenez en connaissance, informez en les habitants de votre logement et mettez les en pratique le mieux possible.
 				</description>
 			</question>
+
+			<question>
+				<id>isolation</id>
+				<name>J'isole mon logement</name>
+				<description>
+					Le chauffage représente près de <b>30% de la consommation énergétique</b> totale (électrique et autre) en France. Il existe pléthore <b>d'aides</b> pour investir dans l'isolation et dans <b>un chauffage plus efficace</b> que l'aburde grille-pain électrique : pompe à challeur, chaudière à granules, etc.<br/>
+					Il existe, partout en France, des <a href="https://fr.wikipedia.org/wiki/Espace_info_%C3%A9nergie">Espace Info Energie</a>. Ce sont des organismes publics, à but non lucratif, qui peuvent réaliser gratuitement un audit de votre habitat, vous conseiller et vous aider à trouver les subventions pour financer d'éventuels travaux. Renseignez vous à l'espace info énergie le plus proche de chez vous.
+				</description>
+			</question>
+
 		</questions>
 	</section>
 
-
 	<section>
 		<id>transport</id>
-		<name>Transport</name>
+		<name>Transports</name>
 		<description>
-			Lorem ipsum, foo <b>lorem ispum</b>
+			Il n'y a pas que la voiture dans la vie ! <br/>
+			Changer de mode de transport, c'est aussi changer de mode de vie.
 		</description>
 		<icon>
 			<symbol>bus</symbol>
 			<color>#8C92DC</color>
 		</icon>
-		<questions />
+		<questions>
+
+			<question>
+				<id>commun</id>
+				<name>Je privilégie le vélo / les transports en commun</name>
+				<description>
+					Embouteillages, parking, pollution : les voitures individuelles sur les trajets courts (domicile / travail), sont un problème à tous les niveaux. En milieu urbain et selon les régions, il est souvent possible de se rendre au travail en transports en commun ou à vélo. Ce n'est pas forcément beaucoup long, mais certainement moins stressant.
+				</description>
+			</question>
+
+			<question>
+				<id>convoiturage</id>
+				<name>Je covoiture</name>
+				<description>
+					Que ce soit sur les trajets longs, ou bientôt pour les trajets quotidien, les solutions de 
+					covoiturage sont maintenant bien développées. Pensez à partager votre voiture avec d'autres passagers : 
+					C'est à la fois économique, écologique et le trajet passe plus vite.
+				</description>
+			</question>
+
+
+			<question>
+				<id>long_trajet</id>
+				<name>J'évite les trajets longue distance</name>
+				<description>
+					Il est souvent possible d'éviter les trajets longue distance :
+					<ul>
+						<li>Que ce soit pour les loisirs : on peut passer de bonnes vacances sans aller à l'autre bout du monde.</li>
+						<li>Ou pour le travail : un déplacement physique pour une réunion d'une journée peut souvent être remplacé par une vidéo-conférence.</li>
+					</ul>
+					Il suffit de faire rentrer l'empreinte carbonne dans nos critères de choix.
+				</description>
+			</question>
+
+		</questions>
 	</section>
 
 	<section>
-		<id>finance</id>
-		<name>Finance</name>
+		<id>consommation</id>
+		<name>Consommation</name>
 		<description>
-			Lorem ipsum, foo <b>lorem ispum</b>
+			Nos choix de consommation sont des actes politiques forts. En les orientant à dessein, on peut infléchir la marche de la société.
 		</description>
 		<icon>
 			<symbol>money</symbol>
 			<color>#E9D760</color>
 		</icon>
-		<questions />
+		<questions>
+			<question>
+				<id>placement</id>
+				<name>Je place mon argent dans des structures éthiques</name>
+				<description>
+					En plaçant notre argent sur des comptes d'épargne et autres assurances vies, nous contribuons à renforcer la sphère de la finance, qui exploite et pressurise aveuglément notre société. Pour sortir de ce cercle vicieux, il est possible de placer son argent en lieu sûr, tout en finançant des projets socialement utiles :
+					<ul>
+						<li><a href="https://www.terredeliens.org/">Terre de liens</a> est un organisme qui rachète des terres agricoles pour les préserver du marché foncier spéculatif et permet aux agriculteurs de s'installer à moindre coût. Une partie des parts prises à terre de liens est déductible des impôts.</li>
+						<li><a href="https://www.lanef.com/">La Nef</a> est une coopérative financière, totalement autonome, qui finance des projets locaux ayant une utilité sociale, écologique et / ou culturelle.</li>
+						<li><a href="http://www.enercoop.fr/">Enercoop</a> est une coopérative fournisseur d'énergie. Il est possible de devenir sociétaire de Enercoop en achetant des parts, dont une partie est déductible des impôts.</li>
+					</ul>
+				</description>
+			</question>
+
+			<question>
+				<id>boycott</id>
+				<name>Je participe à des campagnes de boycott positives</name>
+				<description>
+					La plateforme <a href="https://www.i-boycott.org/">i-boycott</a> propose des campagnes de boycott ciblées contre des sociétés et des marques qui ne se comportent pas de manière éthique (écologiquement, fiscalement, socialement, etc). 
+					Vous pouvez vous déclarer "boycottant" sur cette plateforme, et ainsi faire pression sur l'organisme incriminé pour 
+					qu'il change ses pratiques. I-boycott offre un droit de réponse aux entreprises, et informe les boycottants quand celles ci rentrent dans le droit chemin.  
+				</description>
+			</question>
+
+			<question>
+				<id>occasion</id>
+				<name>J'évite d'acheter du neuf</name>
+				<description>
+					Le bon coin, <a href="https://fr.wikipedia.org/wiki/Gratif%C3%A9ria">gratiféria</a>, récup', recycleries : Il existe de nombreuse manières de donner une seconde vie aux objets dont d'autres se débarassent (meubles, habits, véhicules, téléphones), sans appeler à la production de nouveaux biens, ni consommer de nouvelles resources. 
+				</description>
+			</question>
+
+		</questions>
 	</section>
 
 	<section>
 		<id>alimentation</id>
 		<name>Alimentation</name>
 		<description>
-			Lorem ipsum, foo <b>lorem ispum</b>
+			Nous sommes ce que nous mangeons. <br/>
+			Nos habitudes alimentaires ont un impact tout aussi important sur notre santé que sur l'environnement.
 		</description>
 		<icon>
 			<symbol>cutlery</symbol>
 			<color>#689010</color>
 		</icon>
-		<questions />
+
+		<questions>
+		<question>
+			<id>viande</id>
+			<name>Je réduis ma consommation de viande</name>
+			<description>
+				En plus de la question de la souffrance animale, la consommation de viande consomme énormément de resources : 15.000 litres d'eau pour 1kg de viande; 33% des terres cultivables pour nourrir les animaux d'élevage; . La consommation de viande occidentale est bien trop excessive. Un adulte n'a pas besoin de manger de viande tous les jours : c'est même néfaste pour sa santé. Cette consommation excessive exerce surtout une pression environementale et argicoles importante, au détriment des populations les plus pauvres. 
+			</description>
+			<extra_option>
+				<label>Je deviens végétarien / vegan</label>
+				<description>
+					De plus en plus de personne franchissent le pas, et <a href="http://www.vegetarisme.fr/comment-devenir-vegetarien/">font ce choix cohérent</a> au regard de la souffrance animale, de leur santé et leur empreinte environementale. 
+				</description>
+			</extra_option>
+		</question>
+
+		<question>
+			<id>bio</id>
+			<name>Je consomme bio, local, de saison</name>
+			<description>
+				Plus qu'un choix de santé personnel, consommer bio et local est un engagement citoyen qui permet de :
+				<ul>
+					<li>Sortir de l'agriculture intensive, qui épuise les sols et détruit les insectes (abeilles), mettant en péril, à moyen terme, les conditions même de notre existence.</li>
+					<li>Réduire l'empreinte carbonne de la production alimentaire (moins de motorisation, de transport de marchandise)</li>
+					<li>Soutenir les petits producteurs locaux.</li>
+				</ul> 
+			</description>
+		</question>
+
+		</questions>
+
+	</section>
+
+	<section>
+		<id>dechets</id>
+		<name>Déchets</name>
+		<description>
+			Il est possible de réduire significativement sa production de déchets en adoptant quelques réflexes simples.
+		</description>
+		<icon>
+			<symbol>trash</symbol>
+			<color>#9e8b8b</color>
+		</icon>
+		<questions>
+
+			<question>
+				<id>composte</id>
+				<name>Je composte</name>
+				<description>
+					La plupart des déchets organiques peuvent être valorisés en les compostant. 
+					Ils peuvent ensuite alimenter un potager (individuel ou partagé) réduisant du même 
+					coup le volume et le poids des poubelles. 
+				</description>
+			</question>
+
+			<question>
+				<id>tri</id>
+				<name>Je trie</name>
+				<description>
+					La plupart des communes de France disposent aujoud'hui d'un programme de tri, qui permet de faciliter le recyclage des déchets.
+				</description>
+			</question>
+
+			<question>
+				<id>donne</id>
+				<name>Je répare, je donne, je vends</name>
+				<description>
+					Jeter des objets à la poubelle ou dans une déchetterie devrait être le dernier recours après avoir essayé de lui redonner une seconde vie :
+					<ul>
+						<li>En le donnant, ou le vendant d'occasion, sur internet, dans les vide greniers, les gratiferia, Emmmaus, ...
+						</li>
+						<li>
+							En tentant de le réparer. Si vous n'êtes pas bricoleurs, vous pouvez chercher un <a href="https://repaircafe.org/fr/">Repair Café</a> près de chez vous : Des bénévoles y tiennent régulièrement des permanences et réparent, gratuitement, les objets que vous leur apportez. 
+						</li>
+					</ul>
+				</description>
+			</question>
+
+		</questions>
 	</section>
 
 	<section>
 		<id>citoyennete</id>
 		<name>Citoyenneté</name>
 		<description>
-			Lorem ipsum, foo <b>lorem ispum</b>
+			Pour initier un changement global, nos engagements individuels peuvent également rayonner en engagements politiques, 
+			au sens noble du terme : participer à la vie de la cité.
 		</description>
 		<icon>
 			<symbol>users</symbol>
 			<color>#E3624A</color>
 		</icon>
-		<questions />
+		<questions>
+
+			<question>
+				<id>politique</id>
+				<name>Je m'engage dans la vie de la cité</name>
+				<description>
+					La democratie ne s'use que si on ne s'en sert pas.<br/>
+					Politique municipale, association sportive ou culturelle, association d'usagers des transports en 
+					commun ou des cyclistes, ... : Il existe de nombreuses structures pour s'impliquer, faire entendre sa voix de citoyen
+					et faire evoluer les choses. 
+				</description>
+			</question>
+
+			<question>
+				<id>sociocratie</id>
+				<name>Je pratique la sociocratie et la communication non violente</name>
+				<description>
+					Il est important d'appliquer dans notre entourage les principes que l'ont voudrait voir émerger dans d'autres strates de la société.<br/> 
+					Famille, couple, association, entreprise : le prise de décision (<a href="http://www.sociocratie.net/">sociocratie</a>), la gestion des conflits et la communication apaisée (<a href="https://fr.wikipedia.org/wiki/Communication_non-violente#Probl.C3.A8mes_de_la_terminologie_.C2.AB_officielle_.C2.BB">CNV</a>)sont des techniques utiles dans la vie de tous les jours, auquelles il est bon de se former.
+				</description>
+			</question>
+
+			<question>
+				<id>media</id>
+				<name>Je soutiens les médias indépendants</name>
+				<description>
+					L'information est une arme.<br/>
+					A l'heure ou <a href="http://osonscauser.com/medias-pourquoi-10-milliardaires-controlent-ils-notre-information/">10 milliardaires contrôlent la quasi totalité de la presse Française</a>, il est vital pour la démocratie de soutenir financièrement des médias indépendants qui défendent d'autres modèle de société, d'autres modèles économiques, et exercent un contre pouvoir sur le système en place : La Canard Enchaîné, Le monde Diplo, Fakir, Médiapart, Arrêt sur Images, Basta!, ... le choix ne manque pas. 
+				</description>
+			</question>
+
+		</questions>
 	</section>
 
 	<section>
 		<id>numerique</id>
 		<name>Numérique</name>
 		<description>
-			Lorem ipsum, foo <b>lorem ispum</b>
+			Le numérique prend une place de plus en plus importante dans nos vies. <br/>
+			Là aussi, il est possible de changer nos modes de consommation.
 		</description>
 		<icon>
 			<symbol>mobile</symbol>
 			<color>#B2A2CD</color>
 		</icon>
-		<questions />
+
+		<questions>
+			<question>
+				<id>opensource</id>
+				<name>J'utilise des logiciels libres</name>
+				<description>
+					Un logiciel libre, ou "open source", est un logiciel dont le code source est ouvert : il peut être utilisé librement, 
+					gratuitement, et la communauté des informaticiens peut y apporter des correctifs (fonctionnels ou de sécurité).<br/>
+					L'utilisation de logiciels open source permet un bien meilleur contrôle des données privées et de la sécurité informatique.<br/>
+					L'utilisation de logiciels libre permet surtout de limiter l'accaparement de de plateformes informatiques par quelques gros acteurs (Microsoft, Google, ...) nuisible à nos libertés.<br/>
+					Il est aujourd'hui facile d'abandonner totalement Windows au profit d'un système libre et gratuit (Linux / Ubuntu); pour des fonctionnalités similaires.
+				</description>
+			</question>
+
+
+			<question>
+				<id>degooliser</id>
+				<name>Je me "dégooglise"</name>
+				<description>
+					De la même manière qu'on peut abandonner Windows pour Linux, il est aujourd'hui possible de déserter progressivement 
+					les services internet des GAFAM (Google-Amazon-Facebook-Microsoft), au profit de services libres et gratuits.<br/>
+
+					Dans ce domaine, Framasoft fait un travail remarquable, et <a href="https://degooglisons-internet.org/liste">propose une myriade de services alternatifs</a>, libres et gratuits, hébergés en France (Listes de mails, choix de dates, réseau social, documents partagés, tableur en ligne, petitions, etc, ...)
+
+				</description>
+			</question>
+
+			<question>
+				<id>deconnecte</id>
+				<name>Je me déconnecte</name>
+				<description>
+					L'arrivée des smartphones dans nos poches et la multiplication des services et des applis produit un flux continu de notifications qui nous arrachent en permenance à l'instant présent et nous rendent accrocs à la nouveauté. Ce système est aliénant et affecte notre présence au monde et aux autres.<br/>
+					Il est possible de se sevrer de cette dépendance en coupant régulièrement son téléphone et ces notifications, plus particulièrement au cours de moments sociaux (déjeuner, réunion, film, ... etc)
+				</description>
+			</question>
+
+		</questions>
 	</section>
 
 
