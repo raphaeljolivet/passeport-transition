@@ -222,7 +222,7 @@ hr.question-separator {
 
 
 .title-num {
-    color:gray;
+    color: #5cb85c;
     font-weight:bolder;
     font-size:larger;
 }
@@ -285,4 +285,9 @@ footer {
 footer a {
     color:white !important;
     font-weight: bold;   
+}
+
+#score {
+    padding:5px;
+    border-radius:5px;
 }

@@ -6,7 +6,7 @@
 		<id>non</id>
 		<score>0</score>
 		<color>muted</color>
-		<label>Pas pour l'instant, merci</label>
+		<label>Pas pour l'instant / pas possible</label>
 	</option>
 	<option>
 		<id>engage</id>
@@ -18,7 +18,7 @@
 		<id>oui</id>
 		<score>2</score>
 		<color>success</color>
-		<label>Je l'ai déjà fait</label>
+		<label>Je le fait déjà</label>
 	</option>
 	<option>
 		<id>plus</id>

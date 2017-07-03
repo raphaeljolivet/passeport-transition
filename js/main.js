@@ -32,16 +32,18 @@ function init() {
 			popScore(
 				e.pageY-10,
 				e.pageX-10,
-				$(this).attr('data-score')) })
+				$(this).attr('data-score'), 
+				$(this).attr('data-score-color')) })
 
 }
 
-function popScore(top, left, score) {
+function popScore(top, left, score, colorClass) {
 	if (score > 0) {
 		var div = $("#score").clone();
 		div.text("+" + score)
 		$("body").append(div);
 
+		div.addClass("bg-" + colorClass);
 		div.css('position','absolute');
 		div.offset({left: left, top: top});    
     	div.animate({"top": "-=40px"}, 500, "linear");

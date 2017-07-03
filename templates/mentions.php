@@ -23,7 +23,7 @@
 
       <h4>Données confidentielles</h4>
 
-      <p>Les données provées (prénom, nom, email, photo) stockées sur ce site ne sont ni cédées ni vendus à aucun tiers.</p>
+      <p>Les données privées (prénom, nom, email, photo) stockées sur ce site ne sont ni cédées ni vendus à aucun tiers.</p>
 
       <p>Conformément à la <a href="https://www.cnil.fr/fr/loi-78-17-du-6-janvier-1978-modifiee"> loi « informatique et libertés »</a>, vous pouvez exercer votre droit d'accès aux données vous concernant et les faire rectifier en nous contactant.</p>
 

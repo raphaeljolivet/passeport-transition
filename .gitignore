@@ -3,4 +3,4 @@ vendor
 config.php
 deploy
 img/out/*.png
-
+img/profile/*.png

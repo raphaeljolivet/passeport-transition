@@ -56,6 +56,16 @@ function section_sum($section) {
 	return $res;
 }
 
+function section_engagements($section) {
+	$res = 0;
+	foreach ($section->questions as $question) {
+		if ($question->response == "engage") {
+			$res += 1;
+		} 
+	}
+	return $res;
+}
+
 function section_score($section, $options) {
 	$score = 0;
 	foreach ($section->questions as $question) {
@@ -83,30 +93,33 @@ function draw_section($img, $x, $y, $label, $icon, $color, $score, $sum) {
 	$img->drawImage($box_draw);
 
 	# Draw jauge
-	$jauge_draw = new ImagickDraw();
-	$jauge_draw->setFillColor(withBrightness($color, 80));
-	$jauge_draw->roundRectangle(
-			$x - $ICON_SIZE / 2 + 10, 
-			$y + 10, 
-			$x + $COL_WIDTH - $ICON_SIZE - 10,
-			$y + $ICON_SIZE - 5, 
-			5, 5);
-	$img->drawImage($jauge_draw);
+	if ($sum > 0) {
+		$jauge_draw = new ImagickDraw();
+		$jauge_draw->setFillColor(withBrightness($color, 80));
+		$jauge_draw->roundRectangle(
+				$x - $ICON_SIZE / 2 + 10, 
+				$y + 10, 
+				$x + $COL_WIDTH - $ICON_SIZE - 10,
+				$y + $ICON_SIZE - 5, 
+				5, 5);
+		$img->drawImage($jauge_draw);
 
-	$ratio = ($sum == 0) ? 0 : $score / $sum;
+		$ratio = ($sum == 0) ? 0 : $score / $sum;
 
-	# Draw dark jauge
-	$jauge_draw = new ImagickDraw();
-	$jauge_draw->setFillColor(withBrightness($color, -50));
-	$left = $x - $ICON_SIZE / 2 + 12;
-	$jauge_draw->roundRectangle(
-			$left, 
-			$y + 12, 
-			$left + ($COL_WIDTH - $ICON_SIZE - 4) * $ratio,
-			$y + $ICON_SIZE - 7, 
-			5, 5);
-	$img->drawImage($jauge_draw);
+		# Draw dark jauge
+		$jauge_draw = new ImagickDraw();
+		$jauge_draw->setFillColor(withBrightness($color, -50));
+		$left = $x - $ICON_SIZE / 2 + 12;
+		$jauge_draw->roundRectangle(
+				$left, 
+				$y + 12, 
+				$left + ($COL_WIDTH - $ICON_SIZE - 4) * $ratio,
+				$y + $ICON_SIZE - 7, 
+				5, 5);
+		$img->drawImage($jauge_draw);
 
+	}
+	
 	# Draw icon 
 	$unicode = $ICON_CODES[$icon]; 
 	$text = html_entity_decode("&#x$unicode;", ENT_COMPAT, 'UTF-8');
@@ -125,7 +138,12 @@ function draw_section($img, $x, $y, $label, $icon, $color, $score, $sum) {
 	$score_draw = new ImagickDraw();
 	$score_draw->setFontSize($LABEL_SIZE);
 	$score_draw->setTextAlignment(Imagick::ALIGN_RIGHT);
-	$img->annotateImage($score_draw, $x + $COL_WIDTH - $ICON_SIZE - 5, $y, 0, "$score/$sum");
+
+	$img->annotateImage(
+		$score_draw, 
+		$x + $COL_WIDTH - $ICON_SIZE - 5, 
+		$y, 0, 
+		($sum == 0) ? "$score" : "$score/$sum" );
 
 }
 
@@ -146,11 +164,13 @@ function updateImage($user, $data) {
 	$i = 0;
 	$total_score = 0;
 	$total_sum = 0;
+	$total_engagements = 0;
 	foreach ($data->sections as $section) {
 		$x = floor($i / $NB_ICONS_PER_COL);
 		$y = $i % $NB_ICONS_PER_COL;
 		$score = section_score($section, $data->options);
 		$sum = section_sum($section, $data->options);
+		$total_engagements += section_engagements($section);
 		$total_score += $score;
 		$total_sum += $sum;
 		draw_section(
@@ -163,6 +183,16 @@ function updateImage($user, $data) {
 			$score, $sum);
 		$i += 1;
 	}
+
+	# Draw engage 
+	draw_section(
+			$img, 
+			$ICONS_LEFT+$COL_WIDTH, 
+			$ICONS_TOP+3*$ICONS_HEIGHT, 
+			"Engagements", 
+			"star",
+			"#ffff50",
+			$total_engagements, 0);
 
 	# Draw total 
 	draw_section(
@@ -203,11 +233,9 @@ function updateImage($user, $data) {
 	$name_draw->setTextAlignment(Imagick::ALIGN_CENTER);
 
 	$firstname = $user->firstname;
-	if (empty($firstname)) {
-		$firstname = "Pr\xc3\xa9nom";
-	}
 	$name = $user->name;
-	if (empty($name)) {
+	if (empty($firstname) && empty($name)) {
+		$firstname = "Pr\xc3\xa9nom";
 		$name = "Nom";
 	}
 

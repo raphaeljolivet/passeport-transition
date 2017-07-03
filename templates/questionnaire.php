@@ -35,16 +35,29 @@
                 </li>
                 <?php endforeach ?>
                 <li>
-                  <a href="javascript:submit()" class="btn btn-success" style="padding:7px"/>
+                  <a href="javascript:submit()" class="btn btn-success" style="padding:7px">
                     <span class="glyphicon glyphicon-ok" title="Envoyer"></span>
                     <span class="hidden-xs">Terminer</span>
-                  </a></li>
-              </div>
+                  </a>
+                </li>
+
+                 <li>
+                   <a href="#disqus_thread" title="Commentaires">
+                      <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x text-warning" style="color:#b1e9ff"></i>
+                        <i class="fa fa-comments fa-stack-1x" ></i>
+                      </span>
+                      <span class="hidden-xs">Commentaires</span>
+                    </a>
+                </li>
+
+              </ul>
             </div>
           </div>
-        </div>    
-        <div class="content-section-a">
+        </div>   
 
+
+        <div class="content-section-a">
           <div class="container">
             <div class="row">
               <div class="col-sm-8 col-sm-offset-3 texte-intro">
@@ -156,6 +169,7 @@
                               <div class="radio radio-<?= $option->color ?>">
                                 <input 
                                   data-score="<?= $option->score ?>"
+                                  data-score-color="<?= $option->color ?>"
                                   id="<?= $option_id ?>" 
                                   type="radio" 
                                   value="<?= $option->id ?>" 
@@ -189,9 +203,51 @@
                  <a href="javascript:submit()" class="btn btn-success btn-lg" value="Terminer">Terminer</a>
               </div>
           </form>
+        </div> <!-- Row -->
+
+           <div class="row">
+              <div class="col-sm-8 col-sm-offset-3 texte-intro">
+                  <h3>
+                    <span class="fa-stack">
+                        <i class="fa fa-circle fa-stack-2x text-warning" style="color:#b1e9ff"></i>
+                        <i class="fa fa-comments fa-stack-1x" ></i>
+                    </span>  
+                    Commentaires
+                  </h3>
+              
+                  <p>
+                    Si vous avez des commentaires, ou suggestions d'engagements, c'est ici :
+                  </p>
+
+                  <hr/>
+
+                  <div id="disqus_thread"></div>
+                  <script>
+                    var disqus_config = function () {
+                      this.page.url = "http://passeport-transition.fr/";
+                      this.page.identifier = "home";
+                    };
+                    (function() { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://passeport-transition-fr.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                    })();
+                  </script>
+                  <noscript>
+                    Merci d'activer le Javascript pour voir les  <a href="https://disqus.com/?ref_noscript">commentaires</a>
+                  </noscript>
+              </div>
+            </div>
+
+    </div>
+    <!-- /.container -->
+
+  </div>
+  <!-- /.content-section-a -->
 
 
-<!-- Confirm modal -->
+  <!-- Confirm modal -->
 <div id="confirm-modal" class="modal"  role="dialog">
     <div class="modal-dialog">
     
@@ -210,18 +266,10 @@
             <button id="modal-submit" type="button" class="btn btn-success" data-dismiss="modal">Continuer</button>
             <button type="button" class="btn btn-error" data-dismiss="modal">Annuler</button>
         </div>
-      </div>
-      
-    </div>
+      </div>    
   </div>
+</div>
 
-  <div id="score" >
-  </div>
-
-        </div>
-
-    </div>
-    <!-- /.container -->
-
-  </div>
-  <!-- /.content-section-a -->
+<!-- Sore bubble -->
+<div id="score" >
+</div>

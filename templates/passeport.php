@@ -5,6 +5,14 @@
     <div class="row">
      <div class="col-sm-8 col-sm-offset-2 panel-group ">
   		<div class="panel panel-default">
+
+          <div class="btn-group " role="group" >
+               <a class="btn btn-primary" href="index.php">
+                    <span class="glyphicon glyphicon-step-backward"></span>
+                    Revenir au questionnaire
+               </a>
+          </div>
+
         	<div class="panel-heading" >
             	<h4 class="panel-title">Votre passeport</h4>
           </div>
@@ -17,35 +25,46 @@
                 Il résume votre engagement actuel dans la transition.<br/>
                 Nous vous invitons à <b>le personnaliser</b> avec votre nom et une photo, et le partager sur les réseaux sociaux.
               </p>
-              <p>
-                Cet outil est une initiative à but <b>non lucratif</b> :  
-                Les informations confidentielles (email, réponses, compte facebook) ne sont <b>ni communiquées ni vendues</b> à aucun tiers.     
-              </p>
-              <p>   
-                L'email, falcultatif, nous permet de vous tenir au courant de l'évolution du <i>Passeport Transition</i> et de faire le suivi de vos engagements.
-              </p>
-          
-              <hr />             
+
+              <hr />    
+
+                        <img src="img/out/<?= $user->id ?>.png?<?= $user->last_update ?>" class="img-responsive" />
+
+               <hr/>         
 
               <form method="post" enctype='multipart/form-data' action="?" >
               <div class="row">
                 <div class="col-sm-6">
                     <div class="form-group">
-                      <label for="firstname" class="control-label">Prénom</label><br/>
+                      <label for="firstname" class="control-label">Prénom / pseudo</label><br/>
                       <input type="text" value="<?= $user->firstname ?>" id="firstname" name="firstname" placeholder="Prénom">
                     </div>
                     <div class="form-group">
-                      <label for="name" class="control-label">Nom</label><br/>
+                      <label for="name" class="control-label">Nom</label> (Facultatif)<br/>
                       <input type="text" value="<?= $user->name ?>" id="name" name="name" placeholder="Nom">
                     </div>
                     <div class="form-group">
-                      <label for="email" class="control-label">Email</label> (Facultatif)<br/>
+                      <label for="email" class="control-label">Email</label> (Facultatif)
+
+                      <?php $this->insert('partials/button-modal', [
+                                      id => 'confidentialite', 
+                                      title => 'Confidentialité', 
+                                      text => "<p>
+                                          Cet outil est une initiative à but <b>non lucratif</b> :  
+                                          Les informations confidentielles (email, réponses, compte facebook) ne sont <b>ni communiquées ni vendues</b> à aucun tiers.     
+                                        </p>
+                                        <p>   
+                                          L'email, falcultatif, nous permet de vous tenir au courant de l'évolution du <i>Passeport Transition</i> et de faire le suivi de vos engagements.
+                                        </p>"]); ?>
+                    <br/>
+
+
                       <input type="email" value="<?= $user->email ?>" id="email" name="email" placeholder="Email">
                     </div>
 
                     <div class="fileinput fileinput-new" data-provides="fileinput">
                       <label for="photo" class="control-label">Photo</label> (Facultatif)<br/> 
-                      <input type="file" name="photo" accept="image/*" value="Choisissez un fichier">
+                      <input type="file" name="photo" accept=".jpg,.png,.jpeg" value="Choisissez un fichier">
                     </div>
 
                 </div>
@@ -69,19 +88,13 @@
                       <button type="submit" class="btn btn-success" href="#"> 
                           <i class="fa fa-refresh fa-inverse"></i> Rafraîchir le passeport
                        </button>
-                       <a class="btn btn-primary" href="index.php">
-                            <span class="glyphicon glyphicon-step-backward"></span>
-                            Revenir au questionnaire
-                       </a>
                   </div>
                   </div>
                 </div>
                 </form>
               <hr/>
 
-              <img src="img/out/<?= $user->id ?>.png?<?= $user->last_update ?>" class="img-responsive" />
 
-               <hr/>
 
                <h4> Partager </h4>
 
@@ -97,10 +110,7 @@
                 <div class="panel panel-success">
                   <div class="panel-heading">Lien public</div>
                   <div class="panel-body">
-                    Vous pouvez partager ce passeport avec le lien public suivant :<br>
-                                  <a href="<?= $public_link ?>"><?= $public_link ?></a>
 
-                    <br/></br>
                     <a class="btn btn-primary btn-lg" href="<?= $fb_link ?>" target="popup"> 
                
                       <i class="glyphicon glyphicon-share"></i>
@@ -108,6 +118,14 @@
                
                       Partager sur Facebook
                     </a>
+
+                    <br/><br/>
+
+                    <p>
+                        Vous pouvez partager ce passeport avec le lien public suivant :<br>
+                        <a href="<?= $public_link ?>"><?= $public_link ?></a>
+                    </p>                    
+                 
 
                   </div>
                 </div>
