@@ -18,7 +18,7 @@
 		<id>oui</id>
 		<score>2</score>
 		<color>success</color>
-		<label>Je le fait déjà</label>
+		<label>Je le fais déjà</label>
 	</option>
 	<option>
 		<id>plus</id>
